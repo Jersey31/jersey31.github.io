@@ -1,0 +1,84 @@
+<html>
+<head>
+	<title>Menu Herrera</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #444;
+    color #fff;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  p {
+    color: #f0f0f0;
+  }
+  h1,h2,h3,h4{
+    color: #f0f0f0;
+  }
+  select {
+    background-color: #444;
+    color: #f0f0f0;
+  }
+  label {
+    color: #f0f0f0;
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"], input[type="button"] {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  input[type="text"] {
+    background-color: #444;
+    color: #f0f0f0;
+  }
+  input[type="button"] {
+    background-color: #0056b3; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  input[type="button"]:hover {
+    background-color: #007bff;
+  }
+  dialog {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+	<h2 style="text-align: 	center;">Menu Figuras Geometricas</h2>
+
+	<input type="button" value="Perimetros" onclick="PERIMETROS()">
+	<input type="button" value="Areas" onclick="AREAS()">
+</div>
+
+<script>
+	function AREAS(){
+		window.location.href = "areas.html";
+	}
+	function PERIMETROS(){
+		window.location.href = "perimetros.html";
+	}
+</script>
+</body>
+
+</html>

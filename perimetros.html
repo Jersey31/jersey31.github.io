@@ -1,0 +1,173 @@
+<html>
+<head>
+	<title>Perimetros Herrera</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #444;
+    color #fff;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  p {
+    color: #f0f0f0;
+  }
+  h1,h2{
+    color: #f0f0f0;
+  }
+  select {
+    background-color: #444;
+    color: #f0f0f0;
+  }
+  label {
+    color: #f0f0f0;
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"], input[type="button"] {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  input[type="text"] {
+    background-color: #444;
+    color: #f0f0f0;
+  }
+  input[type="button"] {
+    background-color: #0056b3; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  input[type="button"]:hover {
+    background-color: #007bff;
+  }
+  dialog {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+	<h2 style="text-align: 	center;">Perimetros</h2>
+	<label for="figuras">Seleccione una figura</label>
+	<select id="figuras" onclick="Figuras()">
+    <option disabled selected>Seleccione una figura</option>
+		<option value="Circulo">Circulo</option>
+		<option value="Triangulo">Triangulo</option>
+		<option value="Cuadrado">Cuadrado</option>
+	</select>
+
+	<label>Introduzca los datos:</label>
+
+  <div id="CirculoDatos" style="display: none;">
+   <input type="text" id="RadioCi" placeholder="Ingrese el radio...">
+  </div>
+
+  <div id="TrianguloDatos" style="display: none;">
+    <input type="text" id="lado1T" placeholder="Ingrese el primer lado...">
+    <input type="text" id="lado2T" placeholder="Ingrese el segundo lado...">
+    <input type="text" id="lado3T" placeholder="Ingrese el tercer lado...">
+  </div>
+
+  <div id="CuadradoDatos" style="display: none;" >
+    <input type="text" id="LadoCu" placeholder="Ingrese el lado...">
+  </div>
+
+  <dialog id="dialogo">
+    <h2>Resultado:</h2>
+    <p id="texto"></p>
+    <var><p id="resultado"></p></var>
+    <input type="button" value="Cerrar" onclick="CERRAR()">
+  </dialog>
+
+  <input type="button" value="Calcular" onclick="CALCULAR()">
+	<input type="button" value="Regresar al Menu" onclick="REGRESAR()">
+</div>
+
+<script>
+  function CALCULAR(){
+    var selector = document.getElementById("figuras").value;
+    var radio = parseFloat(document.getElementById("RadioCi").value);
+    var lado1T = parseFloat(document.getElementById("lado1T").value);
+    var lado2T = parseFloat(document.getElementById("lado2T").value);
+    var lado3T = parseFloat(document.getElementById("lado3T").value);
+    var ladoCu = parseFloat(document.getElementById("LadoCu").value);
+    var resultado = null;
+
+    if(selector == "Circulo"){
+      document.getElementById("texto").innerHTML = "El perimetro del Circulo es:";
+      resultado = (2 * 3.141592) * radio;
+    }
+    if(selector == "Triangulo"){
+      document.getElementById("texto").innerHTML = "El perimetro del Triangulo es:";
+      resultado = lado1T + lado2T + lado3T;
+    }
+    if(selector == "Cuadrado"){
+      document.getElementById("texto").innerHTML = "El perimetro del Cuadrado es:";
+      resultado = ladoCu * 4;
+    }
+    if(!isNaN(resultado)){
+      document.getElementById("resultado").innerHTML = "<b>" + resultado.toFixed(2) + " u</b>";
+      document.getElementById("dialogo").showModal();
+    }
+  }
+  function Figuras(){
+    var selector = document.getElementById("figuras").value;
+    var circulo = document.getElementById("CirculoDatos");
+    var triangulo = document.getElementById("TrianguloDatos");
+    var cuadrado = document.getElementById("CuadradoDatos");
+
+    if(selector == "Circulo"){
+      if(circulo.style.display == "block"){
+        circulo.style.display = "none";
+      }else{
+        circulo.style.display = "block";
+      }
+      triangulo.style.display = "none";
+      cuadrado.style.display = "none"
+    }
+
+    if(selector == "Triangulo"){
+      if(triangulo.style.display == "block"){
+        triangulo.style.display = "none";
+      }else{
+        triangulo.style.display = "block";
+      }
+      circulo.style.display = "none";
+      cuadrado.style.display = "none";
+    }
+    if(selector == "Cuadrado"){
+      if(cuadrado.style.display == "block"){
+        cuadrado.style.display = "none";
+      }else{
+        cuadrado.style.display = "block";
+      }
+      circulo.style.display = "none";
+      triangulo.style.display = "none";
+    }
+  }
+  function CERRAR(){
+    document.getElementById("dialogo").close();
+  }
+	function REGRESAR(){
+		window.location.href = "MenuHerrera.html"
+	}
+</script>
+</body>
+</html>
